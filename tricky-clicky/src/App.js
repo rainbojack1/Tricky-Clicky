@@ -8,12 +8,15 @@ import characters from "./characters.json";
 class App extends Component {
   state = {
     characters,
-    clicked: []
+    clicked: [],
+    random: []
   };
   
+  componentDidMount(){
+    this.setState({random: characters});
+  }
   // determine if the image has already been clicked
-  imageclicked = id => {
-    // push clicked characters into an array
+  imageClicked = id => {
     if (this.state.clicked.includes(id)) {
       alert("You've already chosen this one");
     }
@@ -22,15 +25,33 @@ class App extends Component {
     }
 
     console.log("Matched: ", this.state.clicked);
+    this.shuffleImages();
   }
 
+  shuffleImages = () => {
+    // make a copy of the characters arr
+    const copy = this.state.characters;
+
+    let i = copy.length;
+    let j = 0;
+    let temp;
+
+    while (i--) {
+      j = Math.floor(Math.random() * (i + 1));
+
+      temp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = temp;
+    }
+    this.setState({random: copy});
+  }
 
   render() {
     return (
       <>
         <Navbar></Navbar>
         <Jumbotron></Jumbotron>
-        <PlayingField characters={this.state.characters} imageclicked={this.imageclicked}></PlayingField>
+        <PlayingField characters={this.state.random} imageClicked={this.imageClicked}></PlayingField>
       </>
     );
   }
