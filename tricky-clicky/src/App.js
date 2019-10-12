@@ -33,6 +33,7 @@ class App extends Component {
       this.state.clicked.push(id);
       this.setState({correct: "Correct!"});
       this.setState({score: this.state.score + 1});
+      this.setState({showModal: false});
     }
 
     console.log("Matched: ", this.state.clicked);
@@ -61,6 +62,7 @@ class App extends Component {
   endRound = () => {
     this.setState({score: 0});
     this.setState({clicked: []});
+    // this.setState({showModal: ""});
 
     if (this.state.score > this.state.topScore) {
       this.setState({topScore: this.state.score});

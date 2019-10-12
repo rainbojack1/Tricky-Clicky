@@ -8,16 +8,22 @@ class StartOver extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.showModal !== this.props.showModal) {
-        if (this.state.tryingToClose === false){
-            this.setState({isOpen: this.props.showModal});
-        }
+            if (this.state.tryingToClose === false){
+                this.setState({isOpen: this.props.showModal});
+            } else{
+                this.setState({tryingToClose: false});
+            }
         }
         console.log("isOpen: ", this.state.isOpen);
+        console.log("tryingToClose: ", this.state.tryingToClose);
     }
     
   closeModal = () => {
+    //   let newState;
+    //   newState = this.state.tryingToClose === false ? true : false;
     this.setState({tryingToClose: true});
     this.setState({isOpen: false});
+    
    }
 
   render() {
