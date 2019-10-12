@@ -1,5 +1,6 @@
 img{
-  height: 250px;
+  height: 250px; 
+  max-width: 100%;
 }
 
 .App {
@@ -10,8 +11,14 @@ img{
   font-size: 1.5rem;
 }
 
-.borders {
-  border: 1px solid black;
+.card {
+  border-radius: 2px;
+  height: 260px;
+  margin: 1rem;
+  position: relative;
+  width: 250px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  text-align: left;
 }
 
 .lead {

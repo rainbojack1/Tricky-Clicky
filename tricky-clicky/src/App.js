@@ -72,7 +72,7 @@ class App extends Component {
       <>
         <Navbar score={this.state.score} topScore={this.state.topScore} correct={this.state.correct}></Navbar>
         <Jumbotron></Jumbotron>
-        <StartOver  showModal={this.state.showModal}></StartOver>
+        <StartOver  showModal={this.state.showModal} imageClicked={this.imageClicked}></StartOver>
         <PlayingField characters={this.state.random} imageClicked={this.imageClicked}></PlayingField>
         
       </>
