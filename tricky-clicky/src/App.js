@@ -3,25 +3,36 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
 import PlayingField from "./components/PlayingField";
+import StartOver from "./components/StartOver";
 import characters from "./characters.json";
 
 class App extends Component {
   state = {
     characters,
     clicked: [],
-    random: []
+    random: [],
+    score: 0,
+    topScore: 0,
+    correct: "",
+    showModal: false
   };
   
   componentDidMount(){
     this.setState({random: characters});
   }
+
   // determine if the image has already been clicked
   imageClicked = id => {
     if (this.state.clicked.includes(id)) {
-      alert("You've already chosen this one");
+      // alert("You've already chosen this one");
+      this.setState({correct: "Wrong!"});
+      this.setState({showModal: true});
+      this.endRound();
     }
     else {
-      this.state.clicked.push(id)
+      this.state.clicked.push(id);
+      this.setState({correct: "Correct!"});
+      this.setState({score: this.state.score + 1});
     }
 
     console.log("Matched: ", this.state.clicked);
@@ -43,15 +54,27 @@ class App extends Component {
       copy[i] = copy[j];
       copy[j] = temp;
     }
+
     this.setState({random: copy});
+  }
+
+  endRound = () => {
+    this.setState({score: 0});
+    this.setState({clicked: []});
+
+    if (this.state.score > this.state.topScore) {
+      this.setState({topScore: this.state.score});
+    }
   }
 
   render() {
     return (
       <>
-        <Navbar></Navbar>
+        <Navbar score={this.state.score} topScore={this.state.topScore} correct={this.state.correct}></Navbar>
         <Jumbotron></Jumbotron>
+        <StartOver  showModal={this.state.showModal}></StartOver>
         <PlayingField characters={this.state.random} imageClicked={this.imageClicked}></PlayingField>
+        
       </>
     );
   }

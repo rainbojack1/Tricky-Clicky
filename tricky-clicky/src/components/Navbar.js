@@ -2,18 +2,22 @@ import React, { Component } from "react";
 import "../App.css";
 
 class Navbar extends Component {
+  state = {
+    correct: ""
+  };
+
+
   render() {
     return (
       <div>
         <nav className="navbar navbar-light bg-light">
           <div className="navbar-brand mb-0 h1">Tricky Clicky</div>
-          <div className="response">
-              <span>Correct!</span>
-              <span>Wrong!</span>
+          <div className="response">            
+            <span>{this.props.correct}</span>
           </div>
           <div className="score">
-              <span>Score: 0 | </span>
-              <span>Top Score: 0</span>
+            <span>Score: {this.props.score} | </span>
+            <span>Top Score: {this.props.topScore}</span>
           </div>
         </nav>
       </div>

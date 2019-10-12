@@ -17,3 +17,9 @@ img{
 .lead {
   padding-left: 100px;
 }
+
+.modal {
+  display: block;
+  top: 200px;
+  text-align: center;
+} 
