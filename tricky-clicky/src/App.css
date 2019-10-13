@@ -9,6 +9,9 @@ img{
 
 .navbar {
   font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .card {

@@ -21,10 +21,8 @@ class App extends Component {
     this.setState({random: characters});
   }
 
-  // determine if the image has already been clicked
   imageClicked = id => {
     if (this.state.clicked.includes(id)) {
-      // alert("You've already chosen this one");
       this.setState({correct: "Wrong!"});
       this.setState({showModal: true});
       this.endRound();
@@ -36,12 +34,10 @@ class App extends Component {
       this.setState({showModal: false});
     }
 
-    console.log("Matched: ", this.state.clicked);
     this.shuffleImages();
   }
 
   shuffleImages = () => {
-    // make a copy of the characters arr
     const copy = this.state.characters;
 
     let i = copy.length;
@@ -62,8 +58,7 @@ class App extends Component {
   endRound = () => {
     this.setState({score: 0});
     this.setState({clicked: []});
-    // this.setState({showModal: ""});
-
+    
     if (this.state.score > this.state.topScore) {
       this.setState({topScore: this.state.score});
     }

@@ -11,7 +11,7 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-light bg-light">
-          <div className="navbar-brand mb-0 h1">Tricky Clicky</div>
+          <div className="mb-0 h1">Tricky Clicky</div>
           <div className="response">            
             <span>{this.props.correct}</span>
           </div>
